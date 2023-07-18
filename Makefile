@@ -13,24 +13,6 @@ install: up
 build: up
 	@docker-compose exec $(API_CONTAINER_NAME) npm run build
 
-migrate-banking-create: up
-	@docker-compose exec $(API_CONTAINER_NAME) npm run migrate:banking:create $(ARGS)
-
-migrate-banking-run: up
-	@docker-compose exec $(API_CONTAINER_NAME) npm run migrate:banking:run
-
-migrate-banking-revert: up
-	@docker-compose exec $(API_CONTAINER_NAME) npm run migrate:banking:revert
-
-seed-banking-create: up
-	@docker-compose exec $(API_CONTAINER_NAME) npm run seed:banking:create $(ARGS)
-
-seed-banking-run: up
-	@docker-compose exec $(API_CONTAINER_NAME) npm run seed:banking:run
-
-seed-banking-revert: up
-	@docker-compose exec $(API_CONTAINER_NAME) npm run seed:banking:revert
-
 run-dev: up
 	@docker-compose exec $(API_CONTAINER_NAME) npm run dev
 

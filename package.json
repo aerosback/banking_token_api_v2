@@ -12,13 +12,7 @@
     "test:all": "npm run eslint:check && npm run test:unit",
     "test:unit": "npx jest test/unit",
     "test:unit:coverage": "npx jest --coverage",
-    "test:e2e": "npx jest test/e2e --forceExit",
-    "migrate:banking:create": "npx ts-node node_modules/typeorm/cli.js migration:create -c banking -n bankingCreateMigration",
-    "migrate:banking:run": "npx ts-node node_modules/typeorm/cli.js migration:run -c banking",
-    "migrate:banking:revert": "npx ts-node node_modules/typeorm/cli.js migration:revert -c banking",
-    "seed:banking:create": "npx ts-node node_modules/typeorm/cli.js migration:create -c seeds-banking -n seedCreateMigration",
-    "seed:banking:run": "npx ts-node node_modules/typeorm/cli.js migration:run -c seeds-banking",
-    "seed:banking:revert": "npx ts-node node_modules/typeorm/cli.js migration:revert -c seeds-banking"
+    "test:e2e": "npx jest test/e2e --forceExit"
   },
   "author": "Alexander Nuñez H.",
   "license": "MIT",
