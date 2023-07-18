@@ -11,7 +11,7 @@
     "eslint:fix": "npx eslint ./src --fix",
     "test:all": "npm run eslint:check && npm run test:unit",
     "test:unit": "npx jest test/unit",
-    "test:unit:coverage": "npx jest --coverage",
+    "test:unit:coverage": "npx jest test/unit --coverage",
     "test:e2e": "npx jest test/e2e --forceExit"
   },
   "author": "Alexander Nuñez H.",
