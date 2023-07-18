@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+  # Backoffice DB Service
+  banking_host_db:
+    image: postgres:11.1-alpine
+    container_name: banking_host_db
+    environment:
+      POSTGRES_USER: ${BANKING_DB_USER}
+      POSTGRES_PASSWORD: ${BANKING_DB_PASSWORD}
+      POSTGRES_DB: ${BANKING_DB_DATABASE}
+    ports:
+      - '${BANKING_DB_PORT}:${BANKING_DB_PORT}'
+    volumes:
+      - ./docker/postgres/:/docker-entrypoint-initdb.d/
+    networks:
+      - api-network
+
+  # Node Service
+  api:
+    image: 'node:14-alpine'
+    container_name: banking_api
+    restart: unless-stopped
+    tty: true
+    working_dir: '/api'
+    env_file: .env
+    ports:
+      - ${NODE_PORT}:${NODE_PORT}
+    volumes:
+      - ./:/api
+    links:
+      - banking_host_db
+    depends_on:
+      - banking_host_db
+    networks:
+      - api-network
+
+#Docker Networks
+networks:
+  api-network:
+    driver: bridge
+
+#Volumes
+volumes:
+  dbdata:
+    driver: local
