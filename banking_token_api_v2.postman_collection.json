@@ -1,0 +1,220 @@
+{
+	"info": {
+		"_postman_id": "78ac6f99-abd7-4e68-8260-26b0e503be56",
+		"name": "set requests banking app v2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create token",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Token pk_test_1234444444",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "Mati/1.0",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Length",
+						"value": "1048",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Forwarded-For",
+						"value": "52.55.16.54",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "X-Forwarded-Proto",
+						"value": "http",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "X-Signature",
+						"value": "f2861e22782f1a91bb7a0b57eab374055fe60e44a44c5a6d1e003fa431cf9b2f",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": "gzip",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Token b02d1f42bf0f0336e26601adca3e3433c774274e",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "BEARER",
+						"value": "pk_test_abcdefghijk",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Referer",
+						"value": "localhost:",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"card_number\": \"30468713111014\",\n    \"cvv\": \"120\",\n    \"expiration_month\": \"10\",\n    \"expiration_year\": \"2020\",\n    \"email\": \"demomail844@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/banking/cards",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"banking",
+						"cards"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get token info",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Token pk_test_1234444444",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "Mati/1.0",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Length",
+						"value": "1048",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Forwarded-For",
+						"value": "52.55.16.54",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "X-Forwarded-Proto",
+						"value": "http",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "X-Signature",
+						"value": "f2861e22782f1a91bb7a0b57eab374055fe60e44a44c5a6d1e003fa431cf9b2f",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": "gzip",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Token b02d1f42bf0f0336e26601adca3e3433c774274e",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "BEARER",
+						"value": "pk_test_abcdefghijk",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Referer",
+						"value": "localhost:",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdnYiOiIxMjAiLCJlbWFpbCI6ImRlbW9tYWlsODQ0QGdtYWlsLmNvbSIsImV4cGlyYXRpb25Nb250aCI6IjEwIiwiZXhwaXJhdGlvblllYXIiOiIyMDIwIiwibnVtYmVyIjoiMzA0Njg3MTMxMTEwMTQiLCJpYXQiOjE2ODk2NjYzMjAsImV4cCI6MTY4OTY2NzIyMH0.iXyeMGsraqR5VMu-vNQdq-vaMkUXnZ23Yf2Qd2_ATYE\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/banking/card",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"banking",
+						"card"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
