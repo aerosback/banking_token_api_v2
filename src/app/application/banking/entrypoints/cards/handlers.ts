@@ -3,7 +3,7 @@ import { Card } from '../../../../boundedContext/banking/cards/domain/valueObjec
 import { CardCreateController } from '../../controllers/cards/cardCreateController';
 import { CardSearchOneController } from '../../controllers/cards/cardSearchOneController';
 
-exports.createCardHandler = async (event: any, context: any, callback: any) => {
+export async function createCardHandler(event: any, context: any, callback: any): Promise<void> {
 	const cardNumber: string = event.cardNumber;
     const cvv: string = event.cvv;
     const expirationMonth: string = event.expirationMonth;
@@ -16,14 +16,14 @@ exports.createCardHandler = async (event: any, context: any, callback: any) => {
 	callback(null, result);
 }
 
-async function createCard(paramObject: Object): Promise<Card>  {
+export async function createCard(paramObject: Object): Promise<Card>  {
     const cardCreateController: CardCreateController = new CardCreateController();
-    const card = await cardCreateController.exec(paramObject);
+    const card = await cardCreateController.run(paramObject);
     return card;
 }
 
 
-exports.searchOneCardHandler = async (event: any, context: any, callback: any) => {
+export async function searchOneCardHandler(event: any, context: any, callback: any): Promise<void> {
 	const token: string = event.token;
     const paramObject = {token};
 	const result: Card | null = await searchOneCard(paramObject);
@@ -31,8 +31,9 @@ exports.searchOneCardHandler = async (event: any, context: any, callback: any) =
 	callback(null, result);
 }
 
-async function searchOneCard(paramObject: Object): Promise<Card | null>  {
+export async function searchOneCard(paramObject: Object): Promise<Card>  {
     const cardSearchOneController: CardSearchOneController = new CardSearchOneController();
-    const card = await cardSearchOneController.exec(paramObject);
+    const card = await cardSearchOneController.run(paramObject);
     return card;
 }
+

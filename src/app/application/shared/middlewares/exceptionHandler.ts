@@ -1,4 +1,4 @@
-import { Response } from 'express';
+import { ServerResponse } from 'http';
 import { HTTP_STATUS } from '../constants/http_codes';
 import { BaseException } from '../../../boundedContext/shared/domain/exceptions/baseException';
 import { EXCEPTION_CODES } from '../../../boundedContext/shared/domain/exceptions/exceptionCodes';
@@ -31,21 +31,23 @@ const mapErrorCodeToHTTPCode = (error: BaseException): number | undefined => {
 };
 
 
-export const exceptionHandler = (error: Error, res: Response): void => {
+export const exceptionHandler = (error: Error, response: ServerResponse): void => {
   if (error instanceof BaseException) {
     const { message } = error as BaseException;
 
     const httpCode = mapErrorCodeToHTTPCode(error)!;
 
-    res.status(httpCode).json({
+    response.statusCode = httpCode;
+    response.end(JSON.stringify({
       error: message
-    });
+    }));
   } else {
-    res.status(HTTP_STATUS.SERVER_ERROR).json({
-      error: 'Error not contemplated',
-      name: error.name,
-      message: error.message,
-      stack: error.stack
-    });
+    response.statusCode = HTTP_STATUS.SERVER_ERROR;
+    response.end(JSON.stringify({
+        error: 'Error not contemplated',
+        name: error.name,
+        message: error.message,
+        stack: error.stack
+    }));
   }
 };
